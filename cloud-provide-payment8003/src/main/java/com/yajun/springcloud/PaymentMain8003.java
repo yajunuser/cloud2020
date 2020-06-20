@@ -1,0 +1,21 @@
+package com.yajun.springcloud;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+/**
+ *
+ * 功能描述: 服务提供者 第三台
+ *
+ * @param:
+ * @return:
+ * @auther: zyj
+ * @date: 2020/6/20 23:59
+ */
+@SpringBootApplication
+@EnableEurekaClient
+public class PaymentMain8003 {
+    public static void main(String[] args) {
+        SpringApplication.run(PaymentMain8003.class, args);
+    }
+}
