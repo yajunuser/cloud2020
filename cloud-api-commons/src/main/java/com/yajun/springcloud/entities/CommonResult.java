@@ -1,27 +1,17 @@
 package com.yajun.springcloud.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-public class CommonResult<T> {
+@NoArgsConstructor
+@AllArgsConstructor
+public class CommonResult {
 
     private Integer code;
 
     private String message;
 
-    private T data;
-
-    public CommonResult() {
-
-    }
-
-    public CommonResult(Integer code, String message) {
-        this(code, message, null);
-    }
-
-    public CommonResult(Integer code, String message, T data) {
-        this.code = code;
-        this.message = message;
-        this.data = data;
-    }
+    private Object data;
 }
