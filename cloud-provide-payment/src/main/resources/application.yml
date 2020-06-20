@@ -7,9 +7,9 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: org.gjt.mm.mysql.Driver
-    url: jdbc:mysql://localhost:3306/shijie_box?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://rm-8vbp995x3msdf2p5heo.mysql.zhangbei.rds.aliyuncs.com/shijie_server?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=utf-8
     username: root
-    password: root
+    password: QX8mAy&X5#aRJ8GQUd^x53UvKSXdOF
 
     druid:
       filters: stat
