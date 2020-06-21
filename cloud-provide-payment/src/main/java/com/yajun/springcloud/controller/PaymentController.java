@@ -5,9 +5,13 @@ import com.yajun.springcloud.entities.Payment;
 import com.yajun.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
+
 /**
  *
  * 功能描述: 订单模块，发起支付请求
@@ -27,6 +31,10 @@ public class PaymentController {
     private PaymentService paymentService;
     @Value("${server.port}")
     private String serverPort;
+
+    //服务发现组件
+    @Resource
+    private DiscoveryClient discoveryClient;
 
     @PostMapping("/create")
     public CommonResult createPayment(@RequestBody Payment payment) {
@@ -48,5 +56,20 @@ public class PaymentController {
             return new CommonResult(444, "失败,端口号："+serverPort,null);
         }
     }
+    @GetMapping(value = "/discovery")
+    @ResponseBody
+    public Object discovery() {
+        List<String> services = discoveryClient.getServices();
 
+        for (String service : services) {
+            log.info("****element:" + service);
+        }
+
+        List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
+        for (ServiceInstance instance : instances) {
+            log.info(instance.getServiceId() + "\t" + instance.getHost()+"\t" + instance.getPort()+"\t" + instance.getUri());
+        }
+
+        return discoveryClient;
+    }
 }

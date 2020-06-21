@@ -17,8 +17,8 @@ public class OrderController {
 
     @Resource
     private RestTemplate restTemplate;
-
-    private static final String PAYMENT_URL = "http://localhost:8001";
+    //调用eureka 服务的祖册名称 不写死url地址
+    private static final String PAYMENT_URL = "http://CLOUD-PAYMENT-SERVICE";
 
     @GetMapping("/consumer/payment/create")
     public CommonResult create(@RequestBody Payment payment) {
